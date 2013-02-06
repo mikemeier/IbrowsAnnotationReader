@@ -21,6 +21,5 @@
             "Ibrows\\AnnotationReader": "lib/"
         }
     },
-    "target-dir": "Ibrows/AnnotationReader",
     "minimum-stability": "dev"
 }
