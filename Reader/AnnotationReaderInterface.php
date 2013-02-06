@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibrows\AnnotationReader;
+namespace Ibrows\AnnotationReader\Reader;
 
 use Doctrine\Common\Annotations\Reader;
 

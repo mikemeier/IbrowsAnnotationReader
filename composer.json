@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Ibrows\\AnnotationReader": "src"
+            "Ibrows\\AnnotationReader": ""
         }
     },
     "target-dir": "Ibrows/AnnotationReader",
