@@ -20,5 +20,7 @@
         "psr-0": {
             "Ibrows\\AnnotationReader": "src"
         }
-    }
+    },
+    "target-dir": "Ibrows/AnnotationReader",
+    "minimum-stability": "dev"
 }
