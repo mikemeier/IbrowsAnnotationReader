@@ -39,9 +39,9 @@ class AnnotationReader implements AnnotationReaderInterface
         }
 
         $annotations = array(
-            self::SCOPE_CLASS => $this->getClassAnnotations($reflectionClass),
-            self::SCOPE_PROPERTY => $this->getPropertyAnnotations($reflectionClass),
-            self::SCOPE_METHOD => $this->getMethodAnnotations($reflectionClass)
+            self::SCOPE_CLASS => $this->getClassScopeAnnotations($reflectionClass),
+            self::SCOPE_PROPERTY => $this->getPropertyScopeAnnotations($reflectionClass),
+            self::SCOPE_METHOD => $this->getMethodScopeAnnotations($reflectionClass)
         );
 
         return self::$cache[$className] = $annotations;
@@ -73,7 +73,7 @@ class AnnotationReader implements AnnotationReaderInterface
      * @param \ReflectionClass $reflectionClass
      * @return array
      */
-    protected function getPropertyAnnotations(\ReflectionClass $reflectionClass){
+    protected function getPropertyScopeAnnotations(\ReflectionClass $reflectionClass){
         $annotations = array();
 
         foreach($reflectionClass->getProperties() as $reflectionProperty){
@@ -100,7 +100,7 @@ class AnnotationReader implements AnnotationReaderInterface
 
         $parentClass = $reflectionClass->getParentClass();
         if($parentClass){
-            $annotations = array_merge_recursive($this->getPropertyAnnotations($parentClass), $annotations);
+            $annotations = array_merge_recursive($this->getPropertyScopeAnnotations($parentClass), $annotations);
         }
 
         return $annotations;
@@ -110,7 +110,7 @@ class AnnotationReader implements AnnotationReaderInterface
      * @param \ReflectionClass $reflectionClass
      * @return array
      */
-    protected function getMethodAnnotations(\ReflectionClass $reflectionClass){
+    protected function getMethodScopeAnnotations(\ReflectionClass $reflectionClass){
         $annotations = array();
 
         foreach($reflectionClass->getMethods() as $reflectionMethod){
@@ -137,7 +137,7 @@ class AnnotationReader implements AnnotationReaderInterface
 
         $parentClass = $reflectionClass->getParentClass();
         if($parentClass){
-            $annotations = array_merge_recursive($this->getMethodAnnotations($parentClass), $annotations);
+            $annotations = array_merge_recursive($this->getMethodScopeAnnotations($parentClass), $annotations);
         }
 
         return $annotations;
@@ -147,7 +147,7 @@ class AnnotationReader implements AnnotationReaderInterface
      * @param \ReflectionClass $reflectionClass
      * @return array
      */
-    protected function getClassAnnotations(\ReflectionClass $reflectionClass)
+    protected function getClassScopeAnnotations(\ReflectionClass $reflectionClass)
     {
         $annotations = array();
 
@@ -167,7 +167,7 @@ class AnnotationReader implements AnnotationReaderInterface
 
         $parentClass = $reflectionClass->getParentClass();
         if($parentClass){
-            $annotations = array_merge_recursive($this->getClassAnnotations($parentClass), $annotations);
+            $annotations = array_merge_recursive($this->getClassScopeAnnotations($parentClass), $annotations);
         }
 
         return $annotations;
