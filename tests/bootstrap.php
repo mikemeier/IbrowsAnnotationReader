@@ -1,5 +1,7 @@
 <?php
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
+
 function includeIfExists($file){
     if(file_exists($file)){
         return include $file;
@@ -14,3 +16,5 @@ if((!$loader = includeIfExists(__DIR__.'/../vendor/autoload.php')) && (!$loader 
 }
 
 $loader->add('Ibrows\AnnotationReader\Tests\\', __DIR__);
+
+AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
