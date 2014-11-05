@@ -7,5 +7,8 @@ namespace Ibrows\AnnotationReader\Tests\Annotation;
  */
 class TestAnnotation implements TestAnnotationInterface
 {
-
+    /**
+     * @var string
+     */
+    public $key;
 }

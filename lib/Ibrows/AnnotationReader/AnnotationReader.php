@@ -100,7 +100,7 @@ class AnnotationReader implements AnnotationReaderInterface
 
         $parentClass = $reflectionClass->getParentClass();
         if($parentClass){
-            $annotations = array_merge_recursive($this->getPropertyScopeAnnotations($parentClass), $annotations);
+            $annotations = array_merge_recursive($annotations, $this->getPropertyScopeAnnotations($parentClass));
         }
 
         return $annotations;
@@ -137,7 +137,7 @@ class AnnotationReader implements AnnotationReaderInterface
 
         $parentClass = $reflectionClass->getParentClass();
         if($parentClass){
-            $annotations = array_merge_recursive($this->getMethodScopeAnnotations($parentClass), $annotations);
+            $annotations = array_merge_recursive($annotations, $this->getMethodScopeAnnotations($parentClass));
         }
 
         return $annotations;
@@ -167,7 +167,7 @@ class AnnotationReader implements AnnotationReaderInterface
 
         $parentClass = $reflectionClass->getParentClass();
         if($parentClass){
-            $annotations = array_merge_recursive($this->getClassScopeAnnotations($parentClass), $annotations);
+            $annotations = array_merge_recursive($annotations, $this->getClassScopeAnnotations($parentClass));
         }
 
         return $annotations;
